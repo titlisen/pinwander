@@ -53,3 +53,25 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
   setInterval(nextSlide, 4000); // Change slide every 4 seconds
 </script>
+
+// Mobile Swipe Support
+let startX = 0;
+let endX = 0;
+
+const slider = document.querySelector(".slider");
+
+slider.addEventListener("touchstart", function (e) {
+  startX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchmove", function (e) {
+  endX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchend", function () {
+  if (startX - endX > 50) {
+    nextSlide(); // Swipe left
+  } else if (endX - startX > 50) {
+    prevSlide(); // Swipe right
+  }
+});
