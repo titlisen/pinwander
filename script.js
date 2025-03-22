@@ -75,3 +75,52 @@ slider.addEventListener("touchend", function () {
     prevSlide(); // Swipe right
   }
 });
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dotsContainer = document.querySelector('.slider-dots');
+const sliderContainer = document.querySelector('.slider-container');
+
+// Create dots dynamically
+slides.forEach((_, index) => {
+  const dot = document.createElement('span');
+  dot.classList.add('dot');
+  if (index === 0) dot.classList.add('active');
+  dot.addEventListener('click', () => {
+    goToSlide(index);
+  });
+  dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll('.dot');
+
+function goToSlide(index) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = index;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+  let nextIndex = (currentSlide + 1) % slides.length;
+  goToSlide(nextIndex);
+}
+
+function prevSlide() {
+  let prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+  goToSlide(prevIndex);
+}
+
+document.querySelector('.next').addEventListener('click', nextSlide);
+document.querySelector('.prev').addEventListener('click', prevSlide);
+
+// Autoplay
+let autoplay = setInterval(nextSlide, 4000);
+
+// Pause on hover
+sliderContainer.addEventListener('mouseenter', () => clearInterval(autoplay));
+sliderContainer.addEventListener('mouseleave', () => {
+  autoplay = setInterval(nextSlide, 4000);
+});
+
