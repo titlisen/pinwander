@@ -235,6 +235,74 @@ header {
   }
   .slide p {
     font-size: 16px;
+
+    .slider-container {
+  position: relative;
+  overflow: hidden;
+  height: 25vh;
+  background: #f7f7f7;
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 400%; /* 4 slides */
+  touch-action: pan-y;
+}
+
+.slide {
+  width: 100%;
+  flex-shrink: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.slider-arrows button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slider-arrows .prev {
+  left: 10px;
+}
+
+.slider-arrows .next {
+  right: 10px;
+}
+
+.slider-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.slider-dots .dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 5px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.slider-dots .dot.active {
+  background-color: #333;
+}
     margin-bottom: 10px;
   }
   .slide a {
