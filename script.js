@@ -1,5 +1,3 @@
-// script.js
-
 // Show a welcome alert when the website loads
 window.onload = function () {
   alert("Welcome to WanderWave Tours! 🌍✈️");
@@ -33,52 +31,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-<script>
-  let currentSlide = 0;
-  const slides = document.querySelectorAll('.slide');
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-      if (i === index) {
-        slide.classList.add('active');
-      }
-    });
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }
-
-  setInterval(nextSlide, 4000); // Change slide every 4 seconds
-</script>
-
-// Mobile Swipe Support
-let startX = 0;
-let endX = 0;
-
-const slider = document.querySelector(".slider");
-
-slider.addEventListener("touchstart", function (e) {
-  startX = e.touches[0].clientX;
-});
-
-slider.addEventListener("touchmove", function (e) {
-  endX = e.touches[0].clientX;
-});
-
-slider.addEventListener("touchend", function () {
-  if (startX - endX > 50) {
-    nextSlide(); // Swipe left
-  } else if (endX - startX > 50) {
-    prevSlide(); // Swipe right
-  }
-});
+// === SLIDER FUNCTIONALITY ===
 
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.querySelector('.slider-dots');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
 const sliderContainer = document.querySelector('.slider-container');
 
 // Create dots dynamically
@@ -88,6 +47,7 @@ slides.forEach((_, index) => {
   if (index === 0) dot.classList.add('active');
   dot.addEventListener('click', () => {
     goToSlide(index);
+    resetAutoplay();
   });
   dotsContainer.appendChild(dot);
 });
@@ -103,24 +63,63 @@ function goToSlide(index) {
 }
 
 function nextSlide() {
-  let nextIndex = (currentSlide + 1) % slides.length;
+  const nextIndex = (currentSlide + 1) % slides.length;
   goToSlide(nextIndex);
 }
 
 function prevSlide() {
-  let prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+  const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
   goToSlide(prevIndex);
 }
 
-document.querySelector('.next').addEventListener('click', nextSlide);
-document.querySelector('.prev').addEventListener('click', prevSlide);
+// Arrow buttons
+if (nextBtn) nextBtn.addEventListener('click', () => {
+  nextSlide();
+  resetAutoplay();
+});
+if (prevBtn) prevBtn.addEventListener('click', () => {
+  prevSlide();
+  resetAutoplay();
+});
 
 // Autoplay
 let autoplay = setInterval(nextSlide, 4000);
-
-// Pause on hover
-sliderContainer.addEventListener('mouseenter', () => clearInterval(autoplay));
-sliderContainer.addEventListener('mouseleave', () => {
+function resetAutoplay() {
+  clearInterval(autoplay);
   autoplay = setInterval(nextSlide, 4000);
-});
+}
+
+// Pause autoplay on hover
+if (sliderContainer) {
+  sliderContainer.addEventListener('mouseenter', () => clearInterval(autoplay));
+  sliderContainer.addEventListener('mouseleave', () => {
+    autoplay = setInterval(nextSlide, 4000);
+  });
+}
+
+// Mobile Swipe Support
+let startX = 0;
+let endX = 0;
+
+const sliderWrapper = document.querySelector('.slider-wrapper');
+
+if (sliderWrapper) {
+  sliderWrapper.addEventListener('touchstart', function (e) {
+    startX = e.touches[0].clientX;
+  });
+
+  sliderWrapper.addEventListener('touchmove', function (e) {
+    endX = e.touches[0].clientX;
+  });
+
+  sliderWrapper.addEventListener('touchend', function () {
+    if (startX - endX > 50) {
+      nextSlide();
+      resetAutoplay();
+    } else if (endX - startX > 50) {
+      prevSlide();
+      resetAutoplay();
+    }
+  });
+}
 
