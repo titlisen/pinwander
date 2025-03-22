@@ -243,3 +243,8 @@ header {
     font-weight: bold;
   }
 </style>
+
+.slider {
+  overflow: hidden;
+  touch-action: pan-y;
+}
