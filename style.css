@@ -193,7 +193,7 @@ footer {
 .slider-container {
   position: relative;
   overflow: hidden;
-  height: 50vh;
+  height: 100vh; /* Previously 50vh, now doubled */
   background-color: #f7f7f7;
 }
 
@@ -254,6 +254,6 @@ footer {
   }
 
   .slider-container {
-    height: 40vh;
+    height: 80vh; /* Previously 40vh, now doubled */
   }
 }
