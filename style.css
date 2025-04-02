@@ -23,8 +23,7 @@ header {
   padding: 1rem 0;
   position: sticky;
   top: 0;
-  width: 100%;
-  z-index: 1000;
+  z-index: 999;
 }
 
 .nav {
@@ -170,24 +169,6 @@ footer {
   font-size: 0.9rem;
 }
 
-body {
-  background-color: #f8f9fa;
-  font-family: Arial, sans-serif;
-  color: #333;
-}
-
-header {
-  background-color: #0055a5;
-  padding: 20px;
-  text-align: center;
-  color: white;
-}
-
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-}
-
 #scrollToTop {
   display: none;
   position: fixed;
@@ -260,52 +241,6 @@ header {
 
 .slide a:hover {
   background: #e65100;
-}
-
-/* Arrows */
-.slider-arrows button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  z-index: 10;
-  border-radius: 50%;
-}
-
-.slider-arrows .prev {
-  left: 10px;
-}
-
-.slider-arrows .next {
-  right: 10px;
-}
-
-/* Dots */
-.slider-dots {
-  text-align: center;
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-}
-
-.slider-dots .dot {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  background-color: #bbb;
-  border-radius: 50%;
-  margin: 0 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.slider-dots .dot.active {
-  background-color: #ff6600;
 }
 
 /* Responsive */
