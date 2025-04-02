@@ -18,7 +18,7 @@ body {
 
 /* Navigation */
 header {
-  background: #4A90E2; /* Lighter blue */
+  background: #1a3a5f; /* Lighter blue */
   color: #fff;
   padding: 1rem 0;
   position: sticky;
@@ -65,65 +65,110 @@ nav a {
   padding: 2rem;
 }
 
-/* ==== Slider Styles ==== */
-.slider-container {
-  position: relative;
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.btn {
+  background: #ff7b00;
+  padding: 0.8rem 1.5rem;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+/* Sections */
+section {
+  padding: 4rem 0;
+}
+
+h3 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.about p {
+  text-align: center;
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+/* Tour Cards */
+.tour-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
-  height: 100vh;
-  background-color: #B3E5FC; /* Light blue */
+  text-align: center;
+  padding-bottom: 1rem;
 }
 
-.slider {
-  display: flex;
-  width: 400%;
-  transition: transform 0.5s ease-in-out;
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.slide {
-  width: 100vw;
-  flex-shrink: 0;
-  padding: 2rem;
+.card h4 {
+  margin: 1rem 0 0.5rem;
+}
+
+.card p {
+  color: #555;
+}
+
+/* Contact */
+form {
+  max-width: 600px;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: #B3E5FC; /* Light blue */
+  gap: 1rem;
 }
 
-/* Align Slider Arrows */
-.slider-arrows {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  transform: translateY(-50%);
+form input, form textarea {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
-.slider-arrows button {
-  background: rgba(0, 0, 0, 0.5);
+form button {
+  background: #1a3a5f;
   color: white;
+  padding: 0.8rem;
   border: none;
-  padding: 10px 15px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 20px;
-  border-radius: 5px;
 }
 
-.slider-arrows button:hover {
-  background: rgba(0, 0, 0, 0.7);
+form button:hover {
+  background: #ff7b00;
 }
 
-.prev {
-  margin-left: 15px;
+/* Footer */
+footer {
+  background: #1a3a5f;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-.next {
-  margin-right: 15px;
-}
-
-/* Scroll to top button */
 #scrollToTop {
   display: none;
   position: fixed;
@@ -136,10 +181,92 @@ nav a {
   color: white;
   border-radius: 50%;
   cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
 }
 
 #scrollToTop:hover {
   background-color: #e65100;
+}
+
+/* ==== Slider Styles ==== */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  background-color: #cce7ff; /* Light blue */
+}
+
+.slider {
+  display: flex;
+  width: 400%;
+  transition: transform 0.5s ease-in-out;
+  touch-action: pan-y;
+}
+
+.slide {
+  width: 100vw;
+  flex-shrink: 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: #cce7ff; /* Light blue */
+}
+
+.slide h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #1a3a5f;
+}
+
+.slide p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+.slide a {
+  background: #ff6600;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.slide a:hover {
+  background: #e65100;
+}
+
+/* Slider Arrows */
+.slider-arrows {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 20px;
+}
+
+.prev, .next {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 /* Responsive */
