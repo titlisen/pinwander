@@ -271,6 +271,10 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .slider-container {
+    height: 56vh; /* Previously 80vh, now reduced by 30% */
+  }
+  
   .slide h2 {
     font-size: 1.5rem;
   }
