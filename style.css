@@ -193,7 +193,7 @@ footer {
 .slider-container {
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  height: 70vh; /* Reduced by 30% from 100vh */
   background-color: #cce7ff; /* Light blue */
 }
 
