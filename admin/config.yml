@@ -2,6 +2,7 @@ backend:
   name: github
   repo: titlisen/pinwander
   branch: main
+  base_url: https://tranquil-cranachan-89b19d.netlify.app
 
 media_folder: "images/uploads"
 public_folder: "/images/uploads"
